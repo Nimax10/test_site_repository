@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#app {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+header {
+    background-color: rgb(152, 193, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.logo {
+    display: flex;
+}
+.logo p {
+    font-size: 24pt;
+}
+header nav button{
+    padding: 15px;
+    font-size: 15pt;
+    margin: 0 5px;
+    background-color: rgb(160, 255, 152);
+    border: 2px solid black;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+header nav button:hover {
+    background-color: rgb(125, 204, 118);
+}
+.about__us {
+    background: linear-gradient(to left, rgb(194, 194, 255), rgb(255, 211, 146));
+}
+.about__us h1, h2{
+    text-align: center;
+    font-size: 24pt;
+    margin: 10px;
+}
+#about__logo {
+    text-align: center;
+    margin: 20px 0;
+}
+.about__slogan {
+    margin: 0 auto;
+    width: 60%;
+    background-color: rgb(255, 175, 138);
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 24px;
+}
+.about__description {
+    background-color: rgb(125, 255, 255);
+    width: 60%;
+    padding: 0 20px;
+    margin: 40px auto 20px auto;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 17px;
+}
+.about__description p {
+    margin: 20px 0;
+}
+.about__products {
+    padding-bottom: 20px;
+    border-top: 3px solid rgb(37, 37, 37);
+    background-color: rgb(255, 175, 138);
+}
+.ProductsCards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.ProductsCards div {
+    background-color: rgb(167, 66, 103);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    margin: 10px;
+}
+.AllProductsCards {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 40px;
+}
+.AllProductsCards div {
+    background-color: rgb(167, 66, 103);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    margin: 10px;
+}
+.catalog {
+    background: linear-gradient(to left, rgb(194, 194, 255), rgb(255, 211, 146));
+}
+.catalog_cardsSord {
+    display: flex;
+}
+.catalog__sortFilter {
+    width: 20%;
+}
+.catalog__Cards {
+    width: 80%;
+}
+footer {
+    margin-top: auto;
+    background-color: aqua;
+    text-align: center;
+    font-size: 16pt;
+    padding: 10px 0;
+}
+footer div {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.active {
+    transform: translateX(0);
+}

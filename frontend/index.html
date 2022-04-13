@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Comics Land</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/css/logo.svg">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">
+                <img src="assets/css/logo.svg" alt="logo" width="150">
+            </div>
+            <div>
+                <nav>
+                    <a><button v-on:click="currentPage = 'about-us'">О нас</button></a>
+                    <a><button v-on:click="currentPage = 'catalog'">Каталог</button></a>
+                    <a><button v-on:click="currentPage = 'where-us'">Где нас найти?</button></a>
+                    <a><button v-on:click="currentPage = 'reg'" v-if="userLogIn === false">Вход и регистрация</button></a>
+                    <a><button v-on:click="currentPage = 'card-list'" v-if="userLogIn === true">Корзина</button></a>
+                    <a><button v-on:click="logOut" v-if="userLogIn === true">Выйти из аккаунта</button></a>
+                </nav>
+            </div>
+        </header>
+
+        <section v-if="currentPage === 'about-us'" class="about__us">
+            <!-- Страница О нас -->
+            <h1>О нас</h1>
+            <p id="about__logo"><img src="assets/css/logo.svg" alt="logo" width="250"></p>
+            <p class="about__slogan">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis minima harum assumenda dicta deserunt architecto doloribus, iure non dignissimos tenetur odio magnam iusto reprehenderit, veritatis delectus, nobis natus eaque! Excepturi.</p>
+            <div class="about__description">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus dolores esse assumenda quo, cumque blanditiis ullam! Sunt, qui in fuga, consequatur fugiat accusamus numquam eius incidunt omnis, molestiae aut!</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus dolores esse assumenda quo, cumque blanditiis ullam! Sunt, qui in fuga, consequatur fugiat accusamus numquam eius incidunt omnis, molestiae aut!</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus dolores esse assumenda quo, cumque blanditiis ullam! Sunt, qui in fuga, consequatur fugiat accusamus numquam eius incidunt omnis, molestiae aut!</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus dolores esse assumenda quo, cumque blanditiis ullam! Sunt, qui in fuga, consequatur fugiat accusamus numquam eius incidunt omnis, molestiae aut!</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente minus dolores esse assumenda quo, cumque blanditiis ullam! Sunt, qui in fuga, consequatur fugiat accusamus numquam eius incidunt omnis, molestiae aut!</p>
+            </div>
+            <div class="about__products">
+                <h2>Последние добавленные товары</h2>
+                <div class="ProductsCards">
+                    <div v-for="element in about_product">
+                        <img :src="element.image" alt="" width="200" height="200">
+                        <p>{{element.nameProduct}}</p>
+                        <p>{{element.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section v-if="currentPage === 'catalog'" class="catalog">
+            <!-- Страница Каталог -->
+            <h2>Все товары</h2>
+            <div class="catalog_cardsSord">
+                <div class="catalog__Cards">
+                    <div class="AllProductsCards">
+                        <div v-for="(element, idx) in allProducts" v-on:click="chosenProduct = idx; currentPage = 'product'">
+                            <img :src="element.image" alt="" width="200" height="200">
+                            <p>{{element.nameProduct}}</p>
+                            <p>{{element.price}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="catalog__sortFilter">
+                    Сортировать по:
+                        <button v-on:click="sortBy = 'dateRelise'; filterAndSort()">Году производства</button>
+                        <button v-on:click="sortBy = 'name'; filterAndSort()">По названию</button>
+                        <button v-on:click="sortBy = 'price'; filterAndSort()">По цене</button>
+                        <button v-on:click="sortBy = null; filterAndSort()">Сброс</button>
+                    Фильтрация по категории:
+                        <button v-for="elements in categories" v-on:click="filteredBy = elements; filterAndSort()">{{elements.nameCategory}}</button>
+                        <button v-on:click="filteredBy = null; filterAndSort()">Без фильтрации</button>
+                </div>
+            </div>
+        </section>
+
+        <section v-if="currentPage === 'product'">
+            <!-- Страница Товар -->
+            <div>
+                <p>{{allProducts[chosenProduct].nameProduct}}</p>
+                <p>{{allProducts[chosenProduct].price}}</p>
+                <p>{{categories[allProducts[chosenProduct].category].nameCategory}}</p>
+            </div>
+        </section>
+
+        <section v-if="currentPage === 'where-us'">
+            <!-- Страница Где нас найти -->
+        </section>
+
+        <section v-if="currentPage === 'reg'">
+            <!-- Страница Регистрация -->
+        </section>
+
+        <section v-if="currentPage === 'auth'">
+            <!-- Страница Авторизация -->
+        </section>
+
+        <section v-if="currentPage === 'card-list'">
+            <!-- Страница Корзина -->
+        </section>
+
+        <footer>
+            <p>Наши соцсети:</p>
+            <div>
+                <img src="" alt="social">
+                <img src="" alt="social">
+                <img src="" alt="social">
+            </div>
+            <p>Все права принадлежат Funny Comics Land</p>
+        </footer>
+    </div>
+    <script src="assets/js/vue.global.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
